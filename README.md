@@ -91,3 +91,55 @@ fontFamily:{
 17. Para borrar todo el git
       rm -Force .git
 
+18. Cambiar configuración base tailwind
+    Añadiendo dentro de tailwind.config.js
+      1. Podemos complementarla en extend 
+              spacing:{
+              13:'3.25rem',
+              },
+      2. Si lo hacemos al inicio, borraremos las otras configuraciones y solo quedará esta. 
+
+19. Configurar una tema de colores
+      En tailwind.config
+      Añadir const colors = require('tailwindcss/colors')
+      Lo podemos añadir en theme o dentro de theme extend
+        ej. colors: {
+              transparent: 'transparent',
+              current: 'currentColor',
+              white: colors.white,
+              black: colors.black,
+              blue: colors.blue,
+              yellow: colors.yellow,
+              gray: colors.slate,
+              turquoise: colors.cyan,
+              green: colors.lime,
+              red: colors.rose,
+            },
+
+20. Añadir gradiantes de colores
+      Tailwind.config enabled: false,
+      En HTML
+          bg-gradient-to-b // Hacia donde genera el gradiente este caso to bottom
+          from-blue-300    // Color con el que hace el gradiente.
+          h-full           // El gradiente es en toda la página no solo en la pantalla
+          h-screen         // Hace que el gradiente sea en toda la pántalla no en franjas 
+          bg-no-repeat     // Añadiendolo no repite el screen completo solo mantiene el último color
+          via-yellow-200   // Añade un color intermedio
+
+21. Creamos una hoja de estilo común a la compañía
+      company_styles.js, todos esos estilos los importamos a tailwind.config.js
+        presets: [
+          require('./company_styles')
+        ],
+
+22. He borrado el purge pq creo que a partir de tailwind 3.0 no es necesario
+          purge: {
+            enabled: false,
+            content: ['./dist/**/*.html'],
+          },
+
+23. Desactivar plugins en tailwind.config.js
+          corePlugins: {
+            //Dentro de aqui desactivamos el plugin que queramos.
+            float:false,
+          },
